@@ -7,6 +7,8 @@ import { FaShoppingCart } from "react-icons/fa";
 const Cart = () => {
   const [activeCart, setActiveCart] = useState(false);
   const cartItems = useSelector((state) => state.cart.cart); //.cart => it's the cart array
+  const totalQty = cartItems.reduce((totalQty, item) => totalQty + item.qty, 0); 
+  const totalPrice = cartItems.reduce((total, item) => total + (item.qty * item.price), 0);
   return (
     <>
       <div
@@ -38,8 +40,8 @@ const Cart = () => {
         )}
 
         <div className="absolute bottom-0">
-          <h3 className="font-semibold text-gray-800">Items : </h3>
-          <h3 className="font-semibold text-gray-800">Total Amount: </h3>
+          <h3 className="font-semibold text-gray-800">Items : {totalQty}</h3>
+          <h3 className="font-semibold text-gray-800">Total Amount: {totalPrice} </h3>
           <hr className="w-[90vw] lg:w-[20vw] my-2" />
           <button className="bg-green-500 font-bold px-3 text-white py-2 rounded-md w-[90vw] lg:w-[20vw] mb-5 hover:bg-green-600">
             Checkout
@@ -47,7 +49,7 @@ const Cart = () => {
         </div>
       </div>
       <FaShoppingCart
-        className="rounded-full bg-white shadow-md text-5xl p-3 fixed bottom-10 right-4 cursor-pointer"
+        className={`rounded-full bg-white shadow-md text-5xl p-3 fixed bottom-10 right-4 cursor-pointer ${totalQty > 0 && "animate-bounce delay-500 transition-all"}`}
         onClick={() => setActiveCart((prev) => !prev)}
       />
     </>
