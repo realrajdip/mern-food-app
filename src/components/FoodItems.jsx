@@ -1,4 +1,3 @@
-import React from "react";
 import FoodCard from "./FoodCard";
 import FoodData from "../data/FoodData.js";
 

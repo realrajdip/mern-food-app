@@ -28,6 +28,7 @@ const FoodCard = ({ id, name, price, desc, img, rating }) => {
             name,
             price,
             rating,
+            img,
             qty:1
           }))}
           className="px-3 py-2 text-white bg-green-500 hover:bg-green-600 rounded-md text-sm"
