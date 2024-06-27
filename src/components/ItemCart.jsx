@@ -34,6 +34,8 @@ const ItemCart = ({ id, name, price, img, qty }) => {
               onClick={() =>
                 qty >= 1 ? dispatch(incrementQty({ id })) : (qty = 0)
               }
+              // qty >= 1 ? dispatch(incrementQty({ id })) : (qty == 0)
+
               className="border-2 border-gray-600 text-gray-600 hover:bg-green-500 hover:border-none rounded-md p-1 text-xl transition-all ease-linear hover:text-white cursor-pointer"
             />
           </div>
